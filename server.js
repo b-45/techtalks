@@ -1,9 +1,10 @@
 const { ApolloServer, gql } = require("apollo-server")
 const mongoose = require('mongoose')
+require("dotenv").config({ path: "variables.env" });
 
 mongoose
   .connect( 
-    'mongodb+srv://bernard:9H2LheEGPvBKV11m@techtalks-kmoya.mongodb.net/test?retryWrites=true',
+    'mongodb+srv://bernard:' + process.env.MONGO_URI + '@techtalks-kmoya.mongodb.net/test?retryWrites=true',
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB connected"))
@@ -18,7 +19,6 @@ const typeDefs = gql`
     greeting: [Hello]
   }
 `
-
 const server = new ApolloServer({
   typeDefs,
   playground: {
