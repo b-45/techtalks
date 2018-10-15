@@ -4,7 +4,7 @@ require("dotenv").config({ path: "variables.env" });
 
 mongoose
   .connect( 
-    'mongodb+srv://bernard:' + process.env.MONGO_URI + '@techtalks-kmoya.mongodb.net/test?retryWrites=true',
+    process.env.MONGO_URI,
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB connected"))
