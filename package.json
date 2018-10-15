@@ -1,0 +1,27 @@
+{
+  "name": "techtalks",
+  "version": "1.0.0",
+  "description": "Discover presentations about technology",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && npm run serve",
+    "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+  },
+  "author": "Bernard Ade",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.2.6",
+    "apollo-server": "^2.0.0-rc.7",
+    "bcrypt": "^3.0.0",
+    "dotenv": "^6.0.0",
+    "graphql": "^0.13.2",
+    "graphql-cli": "^2.16.7",
+    "jsonwebtoken": "^8.3.0",
+    "md5": "^2.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.1",
+    "concurrently": "^3.6.0"
+  }
+}
