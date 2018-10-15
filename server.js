@@ -1,7 +1,10 @@
 const { ApolloServer, gql } = require("apollo-server")
 const mongoose = require('mongoose')
 require("dotenv").config({ path: "variables.env" });
+const User = require("./models/User");
+const Post = require("./models/Post");
 
+// Connect to MongoDb Atlas cluster
 mongoose
   .connect( 
     process.env.MONGO_URI,
@@ -19,8 +22,13 @@ const typeDefs = gql`
     greeting: [Hello]
   }
 `
+// Initialize Apollo/GraphQL Server
 const server = new ApolloServer({
   typeDefs,
+  context: {
+    User,
+    Post
+  },
   playground: {
     endpoint: '/playground',
     settings: {
@@ -29,7 +37,7 @@ const server = new ApolloServer({
     },
   }
 });
-// Starts the HTTP server listening for connections
+// Start the HTTP server to listen for connections
 server.listen().then(({ url }) => {
   console.log(` 🚀 Server live at  ${url}`);
 });
