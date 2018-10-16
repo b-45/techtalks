@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  likes: {
+  favorites: {
     type: [mongoose.Schema.Types.ObjectId],
     required: true,
     ref: "Post"

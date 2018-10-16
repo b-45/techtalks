@@ -1,8 +1,14 @@
 const { ApolloServer, gql } = require("apollo-server")
 const mongoose = require('mongoose')
-require("dotenv").config({ path: "variables.env" });
-const User = require("./models/User");
-const Post = require("./models/Post");
+require("dotenv").config({ path: "variables.env" })
+const User = require("./models/User")
+const Post = require("./models/Post")
+const path = require('path')
+const fs = require('fs')
+
+// Import typeDefs.gql
+const filePath = path.join(__dirname, "typeDefs.gql");
+const typeDefs = fs.readFileSync(filePath, "utf-8");
 
 // Connect to MongoDb Atlas cluster
 mongoose
@@ -13,15 +19,6 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
 
-const typeDefs = gql`
-  type Hello {
-    greet: String
-  }
-
-  type Query {
-    greeting: [Hello]
-  }
-`
 // Initialize Apollo/GraphQL Server
 const server = new ApolloServer({
   typeDefs,

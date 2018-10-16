@@ -3,5 +3,6 @@
 * [x] connect to mongoDB cluster on Atlas
 * [x] create [users, posts] models for MONGODB database
   * [x] create user schema
-  * [ ] create posts schema
+  * [x] create posts schema
+* [x] create typeDefs file & graphql schema for apollo server
 
