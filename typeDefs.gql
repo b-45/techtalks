@@ -11,7 +11,7 @@ type User {
 type Post {
   _id: ID
   title: String!
-  imageUrl: String!
+  videoUrl: String!
   categories: [String]!
   description: String!
   host: String!
@@ -33,6 +33,14 @@ type Query {
 }
 
 type Mutation {
+  addPost(
+    title: String!
+    videoUrl: String!
+    categories: [String]!
+    description: String!
+    host: String!
+    creatorId: ID!): Post!
+    
   signupUser(
     username: String!, 
     email: String!, 
