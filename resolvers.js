@@ -1,11 +1,16 @@
 module.exports = {
-  // to avoid returning an error, create temporary query property to return null
   Query: {
-    getUser: () => null
+    getPosts: async (_, args, { Post }) => {
+      const posts = await Post.find({}).sort({ createdDate: 'desc' }).populate({
+        path: 'createdBy',
+        model: 'User'
+      })
+      return posts
+    }
   },
   Mutation: {
     addPost: async (_, { title, videoUrl, categories, description, host, creatorId }, { Post }) => {
-      const newPost = await new Post({
+      const newPost = await Post({
         title,
         videoUrl,
         categories,

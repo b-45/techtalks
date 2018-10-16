@@ -6,7 +6,9 @@
   * [x] create posts schema
 * [x] create typeDefs file & graphql schema for apollo server
 * [x] create a dedicated file for resolvers & import into server file
-* [x] create signupUser mutation and resolver (excludes JWT Token)
-* [x] create addPost mutation and resolver 
+* [x] create `signupUser` mutation and resolver (excludes JWT Token)
+* [x] create `addPost` mutation and resolver 
+* [x] create `getPosts` mutation and resolver 
+
 
 
