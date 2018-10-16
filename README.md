@@ -5,4 +5,5 @@
   * [x] create user schema
   * [x] create posts schema
 * [x] create typeDefs file & graphql schema for apollo server
+* [x] create a dedicated file for resolvers & import into server file
 
