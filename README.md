@@ -1,3 +1,14 @@
+**techtalk** is a platform for users to share and discover highly engaging technology presentations.  
+
+### Stack  
+- MongoDb
+- Vue.js 
+- Apollo-Server
+- Apollo-Client
+- Vue-Apollo
+
+### Commits
+
 * [x] install dependencies
 * [x] create server.js file
 * [x] connect to mongoDB cluster on Atlas
@@ -9,6 +20,10 @@
 * [x] create `signupUser` mutation and resolver (excludes JWT Token)
 * [x] create `addPost` mutation and resolver 
 * [x] create `getPosts` mutation and resolver 
+* [x] create & integrate frontend (Vue.js) with backend
+  * [x] configure babel, vue router, vue store 
+  * [x] install tailwind-css 
+  * [x] remove default component files and views
 
 
 
