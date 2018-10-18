@@ -1,4 +1,4 @@
-![techtalks](https://github.com/b-45/techtalks/tree/master/client/src/assets/techtalks.png)
+![techtalks](https://github.com/b-45/techtalks/blob/master/client/src/assets/techtalks.png)
 
 
 ### **techtalks** is a platform for users to share and discover highly engaging technology presentations.  
