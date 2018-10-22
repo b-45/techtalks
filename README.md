@@ -22,6 +22,7 @@
   * [x] configure babel, vue router, vue store 
   * [x] install tailwind-css 
   * [x] remove default component files and views
+  * [x] install vue-fontawesome 
 
 
 
