@@ -31,6 +31,7 @@
 * [x] create header-title in home component
   * [x] add css text shake animation to title header
 * [x] integrate apollo-boost and vue-apollo for frontend queries 
+  * [x] test apollo query from frontend
 
 
 
