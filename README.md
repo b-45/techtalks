@@ -27,8 +27,9 @@
   * [x] remove default component files and views
   * [x] install vue-fontawesome 
 * [x] create Navbar
+  * [x] add hover background on navigation links
 * [x] create header-title in home component
-  * [x] add hover background on navigations links
+  * [x] add css text shake animation to title header
 * [x] integrate apollo-boost and vue-apollo for frontend queries 
 
 
