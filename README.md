@@ -18,13 +18,16 @@
 * [x] create `signupUser` mutation and resolver (excludes JWT Token)
 * [x] create `addPost` mutation and resolver 
 * [x] create `getPosts` mutation and resolver 
+
+**Frontend**
+
 * [x] create & integrate frontend (Vue.js) with backend
   * [x] configure babel, vue router, vue store 
   * [x] install tailwind-css 
   * [x] remove default component files and views
   * [x] install vue-fontawesome 
 * [x] create Navbar
-* [ ] 
+* [x] create title componenct 
 
 
 
