@@ -12,7 +12,7 @@
         </div>
         <div class="flex items-center">
          <div>
-          <button v-for="item in navItems" :key="item.title" :to="item.link" class="mr-8 font-medium">
+          <button v-for="item in navItems" :key="item.title" :to="item.link" class="mr-8 rounded px-1 py-1 font-medium hover:bg-grey">
             <font-awesome-icon :icon="item.icon" size="lg" class="text-grey-darkest mr-2"/>{{item.title}}
           </button>
          </div>

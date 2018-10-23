@@ -28,6 +28,7 @@
   * [x] install vue-fontawesome 
 * [x] create Navbar
 * [x] create header-title in home component
+  * [x] add hover background on navigations links
 * [x] integrate apollo-boost and vue-apollo for frontend queries 
 
 
