@@ -27,7 +27,8 @@
   * [x] remove default component files and views
   * [x] install vue-fontawesome 
 * [x] create Navbar
-* [x] create title componenct 
+* [x] create header-title in home component
+* [x] integrate apollo-boost and vue-apollo for frontend queries 
 
 
 
