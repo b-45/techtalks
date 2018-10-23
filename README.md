@@ -23,6 +23,8 @@
   * [x] install tailwind-css 
   * [x] remove default component files and views
   * [x] install vue-fontawesome 
+* [x] create Navbar
+* [ ] 
 
 
 
