@@ -43,6 +43,6 @@ User Authentication (JWT Tokens)
 * [x] create dynamic variables to query serve from frontend
   * [x] create SIGNIN_USER mutation
   * [x] create SIGNUP_USER mutation
-
+* [x] add routes & forms for user signin and signup pages
 
 
