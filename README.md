@@ -6,6 +6,9 @@
 ### **techtalks** is a platform for users to share and discover highly engaging technology presentations. 
 
 ### Commits
+***
+
+**Backend**
 
 * [x] install dependencies
 * [x] create server.js file
@@ -18,6 +21,8 @@
 * [x] create `signupUser` mutation and resolver (excludes JWT Token)
 * [x] create `addPost` mutation and resolver 
 * [x] create `getPosts` mutation and resolver 
+User Authentication
+* [x] Hash passwords saved to database 
 
 **Frontend**
 

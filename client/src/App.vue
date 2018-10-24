@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center p-4 border-b">
         <div class="flex items-center">
           <a href=""><font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50 text-vivid-purple" /></a>
-          <span class="font-bold text-xl text-grey-darkest">techtalks</span>
+          <span class="font-bold text-lg text-grey-darkest">techtalks</span>
         </div>
         <div>
           <input type="text" placeholder="Search" class="border border-grey-light py-2 px-2 w-128">
