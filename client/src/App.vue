@@ -3,8 +3,7 @@
     <!-- Navbar -->
     <div class="flex justify-between items-center p-4 border-b">
       <div class="flex items-center">
-        <a href="">
-          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50" /></a>
+          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50" />
         <router-link to="/" tag="span" style="cursor: pointer">
           <span class="font-bold text-lg text-grey-darkest">techtalks</span>
         </router-link>
