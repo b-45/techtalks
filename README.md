@@ -24,6 +24,8 @@
 User Authentication (JWT Tokens)
 * [x] Hash passwords saved to database 
 * [x] create `signinUser` mutation and resolver 
+* [x] create JWT tokens to authenticate user signins
+
 
 **Frontend**
 
