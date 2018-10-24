@@ -21,8 +21,9 @@
 * [x] create `signupUser` mutation and resolver (excludes JWT Token)
 * [x] create `addPost` mutation and resolver 
 * [x] create `getPosts` mutation and resolver 
-User Authentication
+User Authentication (JWT Tokens)
 * [x] Hash passwords saved to database 
+* [x] create `signinUser` mutation and resolver 
 
 **Frontend**
 
