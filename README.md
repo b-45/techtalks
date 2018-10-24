@@ -40,6 +40,9 @@ User Authentication (JWT Tokens)
   * [x] add css text shake animation to title header
 * [x] integrate apollo-boost and vue-apollo for frontend queries 
   * [x] test apollo query from frontend
+* [x] create dynamic variables to query serve from frontend
+  * [x] create SIGNIN_USER mutation
+  * [x] create SIGNUP_USER mutation
 
 
 
