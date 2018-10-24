@@ -44,5 +44,6 @@ User Authentication (JWT Tokens)
   * [x] create SIGNIN_USER mutation
   * [x] create SIGNUP_USER mutation
 * [x] add routes & forms for user signin and signup pages
+    * [ ] modify forms and add css styling
 
 

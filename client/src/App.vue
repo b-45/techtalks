@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center p-4 border-b">
       <div class="flex items-center">
         <a href="">
-          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50 text-vivid-purple" /></a>
+          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50" /></a>
         <router-link to="/" tag="span" style="cursor: pointer">
           <span class="font-bold text-lg text-grey-darkest">techtalks</span>
         </router-link>
@@ -17,7 +17,7 @@
       <div class="flex items-center">
       <div v-for="item in navItems" :key="item.title">
           <router-link :to="item.link">
-            <button :to="item.link" class="mr-4 rounded px-1 py-1 font-medium hover:bg-grey">
+            <button :to="item.link" class="mr-4 rounded px-1 py-1 font-normal hover:bg-grey-light">
               <font-awesome-icon :icon="item.icon" size="lg" class="text-grey-darkest mr-2"/>{{item.title}}
             </button>
           </router-link>

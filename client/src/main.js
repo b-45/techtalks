@@ -3,13 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faVideo, faSignInAlt, faUserPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faVideo, faSignInAlt, faUserPlus, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import ApolloClient from 'apollo-boost'
 import VueApollo from 'vue-apollo'
 
-library.add(faPlus, faVideo, faSearch, faSignInAlt, faUserPlus)
+library.add(faPlus, faVideo, faSearch, faSignInAlt, faUserPlus, faUser)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
