@@ -11,9 +11,6 @@
       </div>
 
       <div class="border-b-2 mb-6 text-grey-darkest">
-        <div>
-          <h3 class="mb-8">Account</h3>
-        </div>
 
         <div class="flex flex-wrap mb-2">
           <div class="w-full mb-8">
