@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen p-8">
-    <form class="max-w-sm mx-auto card border-t-4 " @submit.prevent="submit">
+    <form class="max-w-sm mx-auto card border-t-4 " @submit.prevent="handleSigninUser">
       <div class="flex justify-center border-b-2 mb-6 text-grey-darkest">
         <div class="mr-2">
           <font-awesome-icon icon="user" size="lg" />
@@ -9,17 +9,17 @@
           <h3 class="mb-4">Welcome back!</h3>
         </div>
       </div>
-
+      <!-- username field -->
       <div class="border-b-2 mb-6 text-grey-darkest">
         <div class="flex flex-wrap mb-2">
           <div class="w-full mb-8">
             <label for="username" class="form-label">USERNAME</label>
-            <input id="username" class="form-input">
+            <input id="username" class="form-input" v-model="username">
           </div>
-
+          <!-- password field -->
           <div class="w-full mb-6 pr-1">
             <label for="password" class="form-label">PASSWORD</label>
-            <input id="password" class="form-input">
+            <input id="password" type="password" class="form-input" v-model="password">
           </div>
         </div>
       </div>
@@ -36,8 +36,23 @@
 
 <script>
   export default {
+    name: 'Signin',
+    data() {
+      return {
+        username: '',
+        password: '',
+      }
+    },
+    methods: {
+      handleSigninUser() {
+          this.$store.dispatch('signinUser', {
+            username: this.username,
+            password: this.password
+        })
+      }
+    } 
+  };
 
-  }
 </script>
 
 <style scoped>
