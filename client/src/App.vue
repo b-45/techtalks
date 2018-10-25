@@ -25,6 +25,9 @@
             </button>
           </router-link>
         </div>
+        <button v-if="user">
+          <font-awesome-icon icon="sign-out-alt" size="lg" />
+        </button>
       </div>
     </div>
 
@@ -38,11 +41,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
   export default {
     name: 'App',
     computed: {
+      ...mapGetters(['user']),
       navItems() {
-        return [{
+        let items =  [{
             icon: "plus",
             title: 'Create Post',
             link: '/post/add'
@@ -58,6 +63,21 @@
             link: '/signup'
           }
         ]
+        if(this.user){
+          items = [
+            {
+              icon: "plus",
+              title: 'Create Post',
+              link: '/post/add'
+            },
+            {
+              icon: "user",
+              title: 'Profile',
+              link: '/profile'
+            },
+          ]
+        }
+        return items
       }
     }
   }

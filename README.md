@@ -48,5 +48,11 @@ User Authentication (JWT Tokens)
 * [x] add routes & forms for user signin and signup pages
     * [x] modify forms and add css styling
 * [x] create action in store to manage user signins (passed test - return token to console)
+Navigations bar state changes
+* [x] add profile page
+* [x] add logic to change items relevant to user based on authentication state
+* [x] add signout button to navigation bar
+
+
 
 

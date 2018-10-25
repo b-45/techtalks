@@ -4,6 +4,8 @@ import Home from './components/Home.vue'
 import Signin from './components/Auth/Signin.vue'
 import Signup from './components/Auth/Signup.vue'
 import AddPost from './components/Posts/AddPost.vue'
+import Profile from './components/Auth/Profile.vue'
+
 
 
 Vue.use(Router)
@@ -31,6 +33,11 @@ export default new Router({
       path: "/post/add",
       name: "AddPost",
       component: AddPost,
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: Profile,
     },
   ]
 })
