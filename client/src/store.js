@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { defaultClient as apolloClient } from './main'
+import router from './router'
 import {
   SIGNIN_USER,
   GET_CURRENT_USER
@@ -10,11 +11,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    user: null,
     loading: false
   },
   mutations: {
     setLoading: (state, payload) => {
       state.loading = payload
+    },
+    setUser: (state, payload) => {
+      state.user = payload
     }
   },
   actions: {
@@ -26,7 +31,7 @@ export default new Vuex.Store({
         .then(({ data }) => {
           commit('setLoading', false)
           // Add user data to state
-          console.log(data.getCurrentUser)
+          commit('setUser', data.getCurrentUser)
         })
         .catch((err) => {
            console.error(err)
@@ -40,7 +45,8 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           localStorage.setItem('token', data.signinUser.token)
-          console.log(data.signinUser)
+          // reload page
+          router.go()
         })
         .catch(err => {
           console.error(err)
@@ -48,6 +54,7 @@ export default new Vuex.Store({
     },
   },
   getters:{
-
+    user: state => state.user,
+    loading: state => state.loading
   }
 })
