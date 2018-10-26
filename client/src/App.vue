@@ -5,7 +5,7 @@
       <div class="flex items-center">
           <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50" />
         <router-link to="/" tag="span" style="cursor: pointer">
-          <span class="font-bold text-lg text-grey-darkest">techtalks</span>
+          <span class="font-bold text-grey-darkest">techtalks</span>
         </router-link>
       </div>
 
@@ -21,7 +21,7 @@
         <div v-for="item in navItems" :key="item.title">
           <router-link :to="item.link">
             <button :to="item.link" class="mr-6 rounded px-1 py-1 hover:bg-grey-light">
-              <font-awesome-icon :icon="item.icon" size="lg" class="text-grey-darkest"/>
+              <font-awesome-icon :icon="item.icon" size="md" class="text-grey-darkest"/>
             </button>
           </router-link>
         </div>
