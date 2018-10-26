@@ -53,6 +53,7 @@ Navigations bar state changes
 * [x] add logic to change items relevant to user based on authentication state
 * [x] add signout button to navigation bar
 * [x] create logic to de-authenticate user when signed in  
+* [x] protect routes that requires authentication and clear token when user sign in 
 
 
 
