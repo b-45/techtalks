@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <div class="flex justify-between items-center p-4 border-b">
       <div class="flex items-center">
-          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50" />
+          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50 text-red-dark" />
         <router-link to="/" tag="span" style="cursor: pointer">
           <span class="font-bold text-grey-darkest">techtalks</span>
         </router-link>
@@ -21,12 +21,12 @@
         <div v-for="item in navItems" :key="item.title">
           <router-link :to="item.link">
             <button :to="item.link" class="mr-6 rounded px-1 py-1 hover:bg-grey-light">
-              <font-awesome-icon :icon="item.icon" size="md" class="text-grey-darkest"/>
+              <font-awesome-icon :icon="item.icon" class="text-grey-darkest"/>
             </button>
           </router-link>
         </div>
         <button v-if="user" class="mr-6 rounded px-1 py-1 hover:bg-grey-light" @click="handleSignoutUser">
-          <font-awesome-icon icon="sign-out-alt" size="lg" class="text-grey-darkest"/>
+          <font-awesome-icon icon="sign-out-alt" class="text-grey-darkest"/>
         </button>
       </div>
     </div>

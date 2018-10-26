@@ -24,7 +24,7 @@
           </div>
           <div class="w-full mb-8">
             <label for="username" class="form-label">PASSWORD</label>
-            <input id="username" v-model="username" class="form-input">
+            <input id="username" class="form-input">
           </div>
 
           <div class="w-full mb-6 pr-1">
