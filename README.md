@@ -52,6 +52,7 @@ Navigations bar state changes
 * [x] add profile page
 * [x] add logic to change items relevant to user based on authentication state
 * [x] add signout button to navigation bar
+* [x] create logic to de-authenticate user when signed in  
 
 
 

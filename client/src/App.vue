@@ -18,15 +18,15 @@
 
     <!-- toolbar links -->
       <div class="flex items-center">
-      <div v-for="item in navItems" :key="item.title">
+        <div v-for="item in navItems" :key="item.title">
           <router-link :to="item.link">
             <button :to="item.link" class="mr-6 rounded px-1 py-1 hover:bg-grey-light">
               <font-awesome-icon :icon="item.icon" size="lg" class="text-grey-darkest"/>
             </button>
           </router-link>
         </div>
-        <button v-if="user">
-          <font-awesome-icon icon="sign-out-alt" size="lg" />
+        <button v-if="user" class="mr-6 rounded px-1 py-1 hover:bg-grey-light" @click="handleSignoutUser">
+          <font-awesome-icon icon="sign-out-alt" size="lg" class="text-grey-darkest"/>
         </button>
       </div>
     </div>
@@ -44,6 +44,11 @@
 import { mapGetters } from 'vuex'
   export default {
     name: 'App',
+    methods: {
+       handleSignoutUser() {
+        this.$store.dispatch('signoutUser')
+      }
+    },
     computed: {
       ...mapGetters(['user']),
       navItems() {
