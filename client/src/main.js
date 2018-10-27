@@ -5,15 +5,19 @@ import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus, faVideo, faSignInAlt, faUserPlus, faSearch, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FormAlert from './components/Shared/FormAlert.vue'
 
 import ApolloClient from 'apollo-boost'
 import VueApollo from 'vue-apollo'
 
+import { Alert} from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(Alert)
+Vue.use(VueApollo)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 library.add(faPlus, faVideo, faSearch, faSignInAlt, faUserPlus, faUser, faSignOutAlt)
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-Vue.use(VueApollo)
+Vue.component('form-alert', FormAlert)
 
 // Setup ApolloClient
 export const defaultClient = new ApolloClient({

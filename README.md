@@ -55,6 +55,7 @@ Navigations bar state changes
 * [x] create logic to de-authenticate user when signed in  
 * [x] protect routes that requires authentication and clear token when user sign in 
     * [x] protect create post route that requires authentication 
+* [x]  setup alert for graphql errors when authentication fails/ install element UI
 
 
 

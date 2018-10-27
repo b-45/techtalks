@@ -1,7 +1,12 @@
 <template>
   <div class="min-h-screen p-8">
+    <!-- error alert -->
+      <div v-if="error" class="max-w-sm mx-auto mb-4">
+        <form-alert :message="error.message"></form-alert>
+      </div>
     <form class="max-w-sm mx-auto card border-t-4 " @submit.prevent="handleSigninUser">
       <div class="flex justify-center border-b-2 mb-6 text-grey-darkest">
+
         <div class="mr-2">
           <font-awesome-icon icon="user" size="lg" />
         </div>
@@ -35,7 +40,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  import {
+    mapGetters
+  } from 'vuex'
   export default {
     name: 'Signin',
     data() {
@@ -53,18 +60,17 @@ import { mapGetters } from 'vuex'
       }
     },
     computed: {
-      ...mapGetters(['user'])
+      ...mapGetters(['error', 'user'])
     },
     methods: {
       handleSigninUser() {
-          this.$store.dispatch('signinUser', {
-            username: this.username,
-            password: this.password
+        this.$store.dispatch('signinUser', {
+          username: this.username,
+          password: this.password
         })
       }
-    } 
+    }
   };
-
 </script>
 
 <style scoped>
