@@ -9,13 +9,16 @@ import FormAlert from './components/Shared/FormAlert.vue'
 
 import ApolloClient from 'apollo-boost'
 import VueApollo from 'vue-apollo'
+import VeeValidate from 'vee-validate'
 
-import { Alert} from 'element-ui'
+import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import VeeValidate from 'vee-validate';
+
+Vue.use(ElementUI);
 
 Vue.use(VeeValidate)
-Vue.use(Alert)
+
+
 Vue.use(VueApollo)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 library.add(faPlus, faVideo, faSearch, faSignInAlt, faUserPlus, faUser, faSignOutAlt)

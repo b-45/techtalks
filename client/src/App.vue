@@ -37,6 +37,7 @@
         <router-view />
       </div>
     </main>
+
   </div>
 </template>
 
@@ -44,10 +45,22 @@
 import { mapGetters } from 'vuex'
   export default {
     name: 'App',
+    watch: {
+     user(value){
+       if (value) {
+          this.$notify({
+          title: 'Welcome',
+          message: 'You are signed in!',
+          position: 'bottom-right',
+          type: 'success'
+        })
+       }
+     }
+    },
     methods: {
-       handleSignoutUser() {
+      handleSignoutUser() {
         this.$store.dispatch('signoutUser')
-      }
+      },
     },
     computed: {
       ...mapGetters(['user']),

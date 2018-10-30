@@ -57,6 +57,7 @@ Navigations bar state changes
     * [x] protect create post route that requires authentication 
 * [x]  setup alert for graphql errors when authentication fails/ install element UI
 * [x] setup validation rules for signin form  
+* [x] show user notification when signed in
 
 
 
