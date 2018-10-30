@@ -19,12 +19,14 @@
         <div class="flex flex-wrap mb-2">
           <div class="w-full mb-8">
             <label for="username" class="form-label">USERNAME</label>
-            <input id="username" class="form-input" v-model="username">
+            <input name="username" id="username" class="form-input" v-model="username" v-validate="'required'">
+            <div class="text-xs text-red-dark " v-show="errors.has('username')">{{errors.first('username')}}</div>
           </div>
           <!-- password field -->
           <div class="w-full mb-6 pr-1">
             <label for="password" class="form-label">PASSWORD</label>
-            <input id="password" type="password" class="form-input" v-model="password">
+            <input name="password" v-validate="'required'" id="password" type="password" class="form-input" v-model="password">
+            <div class="text-xs text-red-dark "  v-show="errors.has('password')">{{ errors.first('password') }}</div>
           </div>
         </div>
       </div>
@@ -64,10 +66,12 @@
     },
     methods: {
       handleSigninUser() {
-        this.$store.dispatch('signinUser', {
+    this.$validator.validateAll().then(()=> {
+          this.$store.dispatch('signinUser', {
           username: this.username,
           password: this.password
         })
+    }) 
       }
     }
   };

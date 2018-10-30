@@ -12,6 +12,9 @@ import VueApollo from 'vue-apollo'
 
 import { Alert} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VeeValidate from 'vee-validate';
+
+Vue.use(VeeValidate)
 Vue.use(Alert)
 Vue.use(VueApollo)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
