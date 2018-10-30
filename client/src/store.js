@@ -13,7 +13,9 @@ export default new Vuex.Store({
   state: {
     user: null,
     error: null,
-    loading: false
+    loading: false,
+    authError: null
+
   },
   mutations: {
     setLoading: (state, payload) => {
@@ -24,6 +26,9 @@ export default new Vuex.Store({
     },
     setError: (state, payload) => {
       state.error = payload
+    },
+    setAuthError: (state, payload) => {
+      state.authError =payload
     },
     clearUser: state => (state.user = null),
     clearError: state => (state.error  = null),
@@ -41,7 +46,7 @@ export default new Vuex.Store({
           commit('setUser', data.getCurrentUser)
         })
         .catch((err) => {
-           console.error(err)
+           //console.error(err)
         })
     },
     signinUser: ({ commit }, payload) => {
@@ -78,6 +83,7 @@ export default new Vuex.Store({
   getters:{
     user: state => state.user,
     loading: state => state.loading,
-    error: state => state.error
+    error: state => state.error,
+    authError: state => state.authError
   }
 })

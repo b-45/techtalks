@@ -45,6 +45,9 @@
 import { mapGetters } from 'vuex'
   export default {
     name: 'App',
+    created() {
+      console.log(this.authError)
+    },
     watch: {
      user(value){
        if (value) {
@@ -55,7 +58,20 @@ import { mapGetters } from 'vuex'
           type: 'success'
         })
        }
-     }
+     },
+      authError(value){
+       if (value) {
+          this.$notify({
+          title: 'Welcome',
+          message: this.authError.message.replace('Context creation failed:', ''),
+          position: 'bottom-right',
+          type: 'success'
+        })
+       }
+     },
+     
+
+
     },
     methods: {
       handleSignoutUser() {
@@ -63,7 +79,7 @@ import { mapGetters } from 'vuex'
       },
     },
     computed: {
-      ...mapGetters(['user']),
+      ...mapGetters(['authError', 'user']),
       navItems() {
         let items =  [{
             icon: "plus",

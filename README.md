@@ -1,8 +1,7 @@
 ![techtalks](https://github.com/b-45/techtalks/blob/master/client/src/assets/techtalks.png)
 
 
- 
-***
+ ***
 ### **techtalks** is a platform for users to share and discover highly engaging technology presentations. 
 
 ### Commits
@@ -58,6 +57,7 @@ Navigations bar state changes
 * [x]  setup alert for graphql errors when authentication fails/ install element UI
 * [x] setup validation rules for signin form  
 * [x] show user notification when signed in
+* [x] show user error notification when token expires
 
 
 
