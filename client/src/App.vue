@@ -45,9 +45,6 @@
 import { mapGetters } from 'vuex'
   export default {
     name: 'App',
-    created() {
-      console.log(this.authError)
-    },
     watch: {
      user(value){
        if (value) {

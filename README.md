@@ -58,6 +58,7 @@ Navigations bar state changes
 * [x] setup validation rules for signin form  
 * [x] show user notification when signed in
 * [x] show user error notification when token expires
+* [x] create addPost form  
 
 
 

@@ -19,7 +19,12 @@
         <div class="flex flex-wrap mb-2">
           <div class="w-full mb-8">
             <label for="username" class="form-label">USERNAME</label>
-            <input name="username" id="username" class="form-input" v-model="username" v-validate="'required'">
+            <input 
+              name="username" 
+              id="username" 
+              class="form-input" 
+              v-model="username" 
+              v-validate="'required'">
             <div class="text-xs text-red-dark " v-show="errors.has('username')">{{errors.first('username')}}</div>
           </div>
           <!-- password field -->
@@ -66,7 +71,7 @@
     },
     methods: {
       handleSigninUser() {
-    this.$validator.validateAll().then(()=> {
+        this.$validator.validateAll().then(()=> {
           this.$store.dispatch('signinUser', {
           username: this.username,
           password: this.password

@@ -4,7 +4,8 @@ import { defaultClient as apolloClient } from './main'
 import router from './router'
 import {
   SIGNIN_USER,
-  GET_CURRENT_USER
+  SIGNUP_USER,
+  GET_CURRENT_USER,
 } from './queries'
 
 Vue.use(Vuex)
@@ -51,8 +52,6 @@ export default new Vuex.Store({
     },
     signinUser: ({ commit }, payload) => {
       commit('clearError')
-      //clear token
-      localStorage.setItem("token", "")
       apolloClient
         .mutate({
           mutation: SIGNIN_USER,
@@ -60,6 +59,23 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           localStorage.setItem('token', data.signinUser.token)
+          // reload page
+          router.go()
+        })
+        .catch(err => {
+          commit('setError', err)
+          //console.error(err)
+        })
+    },
+    signupUser: ({ commit }, payload) => {
+      commit('clearError')
+      apolloClient
+        .mutate({
+          mutation: SIGNUP_USER,
+          variables: payload
+        })
+        .then(({ data }) => {
+          localStorage.setItem('token', data.signupUser.token)
           // reload page
           router.go()
         })
