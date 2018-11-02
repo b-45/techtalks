@@ -8,9 +8,8 @@
 </template>
 
 <script>
-import { gql } from 'apollo-boost'
 export default {
-  name: 'home',
+  name: 'home'
 
 }
 </script>

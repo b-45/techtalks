@@ -22,6 +22,28 @@ export const GET_CURRENT_USER = gql`
   }
 `
  
+export const INFINITE_SCROLL_POSTS = gql`
+  query($pageNum: Int!, $pageSize: Int!){
+    infiniteScrollPosts(pageNum: $pageNum, pageSize:$pageSize){
+      hasMore
+      posts {
+        _id
+        title
+        videoUrl
+        categories
+        presenter
+        host
+        likes
+        createdDate
+        createdBy {
+          _id
+          avatar
+          username
+        }
+      }
+    }
+  }
+`
 
  // Posts Mutations 
  export const ADD_POST = gql`

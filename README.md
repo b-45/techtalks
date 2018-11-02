@@ -26,6 +26,9 @@ User Authentication (JWT Tokens)
 * [x] create JWT tokens to authenticate user signins
 * [x] create `getCurrentUser` & verify JWT token in server 
 * [x] redirect user to home page after signing in
+* [x] create addPost form mutation 
+* [x] create infinite scroll posts query & resolver 
+
 
 
 **Frontend**
@@ -58,7 +61,6 @@ Navigations bar state changes
 * [x] setup validation rules for signin form  
 * [x] show user notification when signed in
 * [x] show user error notification when token expires
-* [x] create addPost form mutation 
 
 
 
