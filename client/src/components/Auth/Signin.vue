@@ -76,8 +76,8 @@
           username: this.username,
           password: this.password
         })
-    }) 
-      }
+      }) 
+    }
     }
   };
 </script>

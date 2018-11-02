@@ -13,7 +13,7 @@ type Post {
   title: String!
   videoUrl: String!
   categories: [String]!
-  description: String!
+  presenter: String!
   host: String!
   createdDate: String
   likes: Int
@@ -42,7 +42,7 @@ type Mutation {
     title: String!
     videoUrl: String!
     categories: [String]!
-    description: String!
+    presenter: String!
     host: String!
     creatorId: ID!): Post!
     

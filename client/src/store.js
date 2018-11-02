@@ -5,6 +5,7 @@ import router from './router'
 import {
   SIGNIN_USER,
   SIGNUP_USER,
+  ADD_POST,
   GET_CURRENT_USER,
 } from './queries'
 
@@ -49,6 +50,17 @@ export default new Vuex.Store({
         .catch((err) => {
            //console.error(err)
         })
+    },
+    
+    addPost: ({ commit }, payload) => {
+      apolloClient.mutate({
+        mutation: ADD_POST,
+        variables: payload
+      }).then(({data}) => {
+        console.log(data.addPost)
+      }).catch(err => {
+        console.error(err)
+      })
     },
     signinUser: ({ commit }, payload) => {
       commit('clearError')

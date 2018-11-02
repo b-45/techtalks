@@ -24,6 +24,32 @@ export const GET_CURRENT_USER = gql`
  
 
  // Posts Mutations 
+ export const ADD_POST = gql`
+  mutation(
+  $title: String! 
+  $videoUrl: String! 
+  $categories: [String]!  
+  $presenter:String!
+  $host: String!  
+  $creatorId: ID!
+) {
+  addPost(
+    title: $title
+    videoUrl: $videoUrl
+    categories: $categories 
+    presenter:$presenter
+    host: $host 
+    creatorId: $creatorId
+  ) {
+    _id
+    title
+    videoUrl
+    categories
+    presenter
+    host
+  }
+}
+ `
 
 
 // User Mutation

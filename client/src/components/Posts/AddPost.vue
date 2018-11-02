@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen p-8">
-    <form class="max-w-sm mx-auto card border-t-4">
+    <form class="max-w-sm mx-auto card border-t-4" @submit.prevent="handleAddPosts" >
       <div class="flex justify-center border-b-2 mb-6 text-grey-darkest">
         <div class="mb-4">
           <h3>Add a Post</h3>
@@ -31,6 +31,13 @@
               </el-option>
             </el-select>
           </div>
+          <!-- presenter -->
+          <div class="w-full mb-6 pr-1">
+            <label for="presenter" class="form-label">PRESENTER</label>
+            <input id="presenter" type="text" class="form-input" v-model="presenter"
+              v-validate="'required'" name="presenter">
+            <div class="text-xs text-red-dark " v-show="errors.has('presenter')">{{errors.first('presenter')}}</div>
+          </div>
           <!-- host -->
           <div class="w-full mb-6 pr-1">
             <label for="host" class="form-label">HOST</label>
@@ -49,6 +56,7 @@
 </template>
 
 <script>
+import { mapGetters} from 'vuex'
   export default {
     name: 'Signup',
     data() {
@@ -56,6 +64,7 @@
         title: '',
         videoUrl: '',
         categories: [],
+        presenter:'',
         host: '',
         options: [
           {
@@ -73,5 +82,23 @@
         ],
       }
     },
+    computed: {
+      ...mapGetters(['user'])
+    },
+    methods: {
+      handleAddPosts(){
+          this.$validator.validateAll().then(()=> {
+          this.$store.dispatch('addPost', {
+          title: this.title,
+          videoUrl: this.videoUrl,
+          categories: this.categories,
+          presenter: this.presenter,
+          host: this.host,
+          creatorId: this.user._id
+        })
+        this.$router.push('/')
+      }) 
+      }
+    }
   }
 </script>
