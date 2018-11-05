@@ -28,6 +28,7 @@ User Authentication (JWT Tokens)
 * [x] redirect user to home page after signing in
 * [x] create addPost form mutation 
 * [x] create infinite scroll posts query & resolver 
+* [x] Re-create data model for mongodb and graphql types, utilize ytdl-getinfo to extract metadata from youtube url 
 
 
 

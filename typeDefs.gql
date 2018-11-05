@@ -10,23 +10,15 @@ type User {
 
 type Post {
   _id: ID
+  videoUrl: String
   title: String!
-  videoUrl: String!
-  categories: [String]!
-  presenter: String!
-  host: String!
-  createdDate: String
+  duration: Int
+  thumbnail: String
+  like_ratio: Int
   likes: Int
+  createdDate: String
   createdBy: User!
-  messages: [Message]
-}
-
-type Message {
-  _id: ID
-  messageBody: String!
-  messageDate: String
-  messageUser: User!
-}
+ }
 
 type Token {
   token: String!
@@ -45,11 +37,7 @@ type Query {
 
 type Mutation {
   addPost(
-    title: String!
     videoUrl: String!
-    categories: [String]!
-    presenter: String!
-    host: String!
     creatorId: ID!): Post!
     
   signupUser(

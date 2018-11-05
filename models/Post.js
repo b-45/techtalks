@@ -1,55 +1,44 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
+const { getInfo } = require('ytdl-getinfo')
 
 const PostSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
   videoUrl: {
     type: String,
     required: true
   },
-  categories: {
-    type: [String],
-    required: true
-  },
-  presenter: {
+  title: {
     type: String,
-    required: true
   },
-  host: {
-    type: String,
-    required: true
+  duration: {
+    type: Number
+  },
+  thumbnail: {
+    type: String
+  },
+  like_ratio: {
+    type: Number
+  },
+  likes:{
+    type: Number,
+    default: 0
   },
   createdDate: {
     type: Date,
     default: Date.now
   },
-  likes: {
-    type: Number,
-    default: 0
-  },  
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "User"
   },
-  messages: [
-    {
-      messageBody: {
-        type: String,
-        required: true
-      },
-      messageDate: {
-        type: Date,
-        default: Date.now
-      },
-      messageUser: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
-      }
-    }
-  ]
-});
+})
+
+PostSchema.pre('save', async function (next) {
+    let data = await getInfo(this.videoUrl)  
+    this.title = data.items[0].title
+    this.duration = data.items[0].duration
+    this.thumbnail = data.items[0].thumbnail
+    this.like_ratio = data.items[0].like_count/data.items[0].dislike_count
+    next()
+})
 module.exports = mongoose.model("Post", PostSchema);

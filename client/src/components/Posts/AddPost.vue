@@ -6,44 +6,14 @@
           <h3>Add a Post</h3>
         </div>
       </div>
-
       <div class="border-b-2 mb-6 text-grey-darkest">
         <div class="flex flex-wrap mb-2">
-          <!-- title input -->
-          <div class="w-full mb-8">
-            <label for="username" class="form-label">TITLE</label>
-            <input id="title" type="text" class="form-input" v-model="title" v-validate="'required'" name="title">
-            <div class="text-xs text-red-dark " v-show="errors.has('title')">{{errors.first('title')}}</div>
-          </div>
-
+       
           <!-- videoUrl -->
           <div class="w-full mb-6 pr-1">
             <label for="videoUrl" class="form-label">VIDEOURL</label>
             <input id="videoUrl" type="text" class="form-input" v-model="videoUrl" v-validate="'required'" name="videoUrl">
             <div class="text-xs text-red-dark " v-show="errors.has('videoUrl')">{{errors.first('videoUrl')}}</div>
-          </div>
-
-          <!-- categories  -->
-          <div class="w-full mb-8">
-            <label for="categories" class="form-label">CATEGORIES</label>
-            <el-select v-model="categories" multiple collapse-tags  placeholder="Select Category">
-              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-              </el-option>
-            </el-select>
-          </div>
-          <!-- presenter -->
-          <div class="w-full mb-6 pr-1">
-            <label for="presenter" class="form-label">PRESENTER</label>
-            <input id="presenter" type="text" class="form-input" v-model="presenter"
-              v-validate="'required'" name="presenter">
-            <div class="text-xs text-red-dark " v-show="errors.has('presenter')">{{errors.first('presenter')}}</div>
-          </div>
-          <!-- host -->
-          <div class="w-full mb-6 pr-1">
-            <label for="host" class="form-label">HOST</label>
-            <input id="host" type="text" class="form-input" v-model="host"
-              v-validate="'required'" name="host">
-            <div class="text-xs text-red-dark " v-show="errors.has('host')">{{errors.first('host')}}</div>
           </div>
         </div>
       </div>
@@ -61,25 +31,7 @@ import { mapGetters} from 'vuex'
     name: 'Signup',
     data() {
       return {
-        title: '',
-        videoUrl: '',
-        categories: [],
-        presenter:'',
-        host: '',
-        options: [
-          {
-            value: 'Option1',
-            label: 'Option1'
-        }, 
-          {
-            value: 'Option2',
-            label: 'Option2'
-        }, 
-          {
-            value: 'Option3',
-            label: 'Option3'
-        },
-        ],
+         videoUrl: '',  
       }
     },
     computed: {
@@ -89,12 +41,8 @@ import { mapGetters} from 'vuex'
       handleAddPosts(){
           this.$validator.validateAll().then(()=> {
           this.$store.dispatch('addPost', {
-          title: this.title,
-          videoUrl: this.videoUrl,
-          categories: this.categories,
-          presenter: this.presenter,
-          host: this.host,
-          creatorId: this.user._id
+            videoUrl: this.videoUrl,
+            creatorId: this.user._id
         })
         this.$router.push('/')
       }) 
