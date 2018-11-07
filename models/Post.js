@@ -36,7 +36,7 @@ const PostSchema = new mongoose.Schema({
 PostSchema.pre('save', async function (next) {
     let data = await getInfo(this.videoUrl)  
     this.title = data.items[0].title
-    this.duration = data.items[0].duration
+    this.duration = Math.floor(data.items[0].duration/60)
     this.thumbnail = data.items[0].thumbnail
     this.likeRatio = Math.floor(data.items[0].like_count/(data.items[0].like_count + data.items[0].dislike_count) * 100)
     next()
