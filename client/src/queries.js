@@ -1,6 +1,29 @@
 import { gql } from 'apollo-boost'
 
 // Posts Queries
+
+export const INFINITE_SCROLL_POSTS = gql`
+  query($pageNum: Int!, $pageSize: Int!){
+    infiniteScrollPosts(pageNum: $pageNum, pageSize:$pageSize){
+      hasMore
+      posts {
+        _id
+        videoUrl
+        title
+        duration
+        thumbnail
+        likeRatio
+        likes
+        createdDate
+        createdBy {
+          _id
+          avatar
+          username
+        }
+      }
+    }
+  }
+`
  
 
 // User Queries
@@ -22,28 +45,6 @@ export const GET_CURRENT_USER = gql`
   }
 `
  
-export const INFINITE_SCROLL_POSTS = gql`
-  query($pageNum: Int!, $pageSize: Int!){
-    infiniteScrollPosts(pageNum: $pageNum, pageSize:$pageSize){
-      hasMore
-      posts {
-        _id
-        videoUrl
-        title
-        duration
-        thumbnail
-        like_ratio
-        likes
-        createdDate
-        createdBy {
-          _id
-          avatar
-          username
-        }
-      }
-    }
-  }
-`
 
  // Posts Mutations 
  export const ADD_POST = gql`
@@ -60,6 +61,7 @@ export const INFINITE_SCROLL_POSTS = gql`
     title
     duration
     thumbnail
+    likeRatio
   }
 }
  `

@@ -15,7 +15,7 @@ const PostSchema = new mongoose.Schema({
   thumbnail: {
     type: String
   },
-  like_ratio: {
+  likeRatio: {
     type: Number
   },
   likes:{
@@ -38,7 +38,7 @@ PostSchema.pre('save', async function (next) {
     this.title = data.items[0].title
     this.duration = data.items[0].duration
     this.thumbnail = data.items[0].thumbnail
-    this.like_ratio = Math.floor(data.items[0].like_count/(data.items[0].like_count + data.items[0].dislike_count) * 100)
+    this.likeRatio = Math.floor(data.items[0].like_count/(data.items[0].like_count + data.items[0].dislike_count) * 100)
     next()
 })
 module.exports = mongoose.model("Post", PostSchema);

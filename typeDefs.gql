@@ -14,7 +14,7 @@ type Post {
   title: String!
   duration: Int
   thumbnail: String
-  like_ratio: Int
+  likeRatio: Int
   likes: Int
   createdDate: String
   createdBy: User!
