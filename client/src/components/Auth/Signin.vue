@@ -37,8 +37,8 @@
       </div>
       <div class="text-center">
         <button type="submit" class="bg-purple hover:bg-purple-light text-white py-2 px-4 rounded font-semibold text-sm mb-4">SIGNIN</button>
-        <p class="font-semibold">Register a new acccount
-          <router-link to="/signup">Signup</router-link>
+        <p class="font-semibold">Register a new acccount 👉🏼
+          <router-link to="/signup" class="no-underline cursor-pointer text-green">Signup</router-link>
         </p>
       </div>
 

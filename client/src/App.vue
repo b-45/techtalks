@@ -1,16 +1,16 @@
 <template>
-  <div class="min-h-screen bg-grey-lightest font-sans antialiased leading-tight">
+  <section class="min-h-screen bg-grey-lightest font-sans antialiased leading-tight">
     <!-- Navbar -->
-    <div class="flex justify-between items-center p-4 border-b">
+    <nav class="flex justify-between items-center p-4 border-b">
       <div class="flex items-center">
-          <font-awesome-icon icon="video" size="lg" class="mr-2 opacity-50 text-red-dark" />
+          <font-awesome-icon icon="video" size="lg" class="mr-2 text-grey-darkest" />
         <router-link to="/" tag="span" style="cursor: pointer">
           <span class="font-bold text-grey-darkest">techtalks</span>
         </router-link>
       </div>
 
     <!-- search bar -->
-      <div>
+      <div class="flex">
         <input type="text" placeholder="Search" class="border border-grey-light py-2 px-2 w-128">
         <button class="border-t border-r border-b border-grey-light py-2 px-6 text-grey-darkest">
           <font-awesome-icon icon="search" /></button>
@@ -29,16 +29,12 @@
           <font-awesome-icon icon="sign-out-alt" class="text-grey-darkest"/>
         </button>
       </div>
-    </div>
+    </nav>
 
-  <!-- app content -->
-    <main>
-      <div class="container mt-4 mx-auto">
-        <router-view />
-      </div>
-    </main>
-
-  </div>
+  <!-- app content -->  
+    <router-view />
+  
+  </section>
 </template>
 
 <script>

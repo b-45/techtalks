@@ -69,8 +69,8 @@
       </div>
       <div class="text-center">
         <button type="submit" class="bg-purple hover:bg-purple-light text-white py-2 px-4 rounded font-semibold text-sm mb-4">SIGNUP</button>
-        <p class="font-semibold">Aready have an acccount
-          <router-link to="/signin">Signin</router-link>
+        <p class="font-semibold">Already have an account? 
+          <router-link to="/signin" class="no-underline cursor-pointer text-green"> Signin</router-link>
         </p>
       </div>
 

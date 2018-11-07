@@ -28,7 +28,8 @@ User Authentication (JWT Tokens)
 * [x] redirect user to home page after signing in
 * [x] create addPost form mutation 
 * [x] create infinite scroll posts query & resolver 
-* [x] Re-create data model for mongodb and graphql types, utilize ytdl-getinfo to extract metadata from youtube url 
+* [x] Re-create data model for mongodb and graphql types, utilize ytdl-getinfo to extract metadata from youtube url
+ 
 
 
 
@@ -62,6 +63,7 @@ Navigations bar state changes
 * [x] setup validation rules for signin form  
 * [x] show user notification when signed in
 * [x] show user error notification when token expires
+* [x] create post user interface 
 
 
 
