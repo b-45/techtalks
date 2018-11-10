@@ -5,12 +5,12 @@
  * You can see the styles here:
  * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
  */
-@import '~tailwindcss/preflight.css';
+@import "~tailwindcss/preflight.css";
 
 /**
  * This injects any component classes registered by plugins.
  */
-@import '~tailwindcss/components.css';
+@import "~tailwindcss/components.css";
 
 /**
  * Here you would add any of your custom component classes; stuff that you'd
@@ -25,7 +25,7 @@
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
  */
-@import '~tailwindcss/utilities.css';
+@import "~tailwindcss/utilities.css";
 .shake {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -35,22 +35,29 @@
   -ms-text-fill-color: transparent;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(45deg, 
-                  
-                    #7794ff, 
-                    #44107A,
-                    #FF1361,
-                    #FFF800);
-  animation: .8s shake infinite alternate;
+  background-image: linear-gradient(45deg, #434343, #434343, #434343, #434343);
+  animation: 0.8s shake infinite alternate;
 }
 
 @keyframes shake {
-  0% { transform: skewX(-15deg); }
-  5% { transform: skewX(15deg); }
-  10% { transform: skewX(-15deg); }
-  15% { transform: skewX(15deg); }
-  20% { transform: skewX(0deg); }
-  100% { transform: skewX(0deg); }  
+  0% {
+    transform: skewX(-15deg);
+  }
+  5% {
+    transform: skewX(15deg);
+  }
+  10% {
+    transform: skewX(-15deg);
+  }
+  15% {
+    transform: skewX(15deg);
+  }
+  20% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
 }
 
 .card {
@@ -94,15 +101,14 @@
 }
 
 .border-t-purple {
-  border-top-color: #a779e9
+  border-top-color: #a779e9;
 }
 button:focus {
-  outline:0;
-  }
+  outline: 0;
+}
 input:focus {
-  outline:0;
-  }
-
+  outline: 0;
+}
 
 /**
  * Here you would add any custom utilities you need that don't come out of the

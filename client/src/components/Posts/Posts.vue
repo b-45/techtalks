@@ -1,63 +1,87 @@
 <template>
-  <ul class="list-reset">
-    <li>
-      <div class="flex bg-white rounded-lg select-none cursor-pointer  border-transparent border-2 hover:border-grey-light">
-        <div class="mr-4 ">
-          <img class="block h-24 w-32 rounded-l-lg" src="https://images.unsplash.com/photo-1530662590558-6463b5186074?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=764b3205c9644bf5860650cf20e72433&auto=format&fit=crop&w=1430&q=80"
-            alt="">
+  <ul class="list-reset" v-if="infiniteScrollPosts">
+    <li class="flex justify-between bg-white rounded-sm select-none cursor-pointer shadow border-2 border-transparent hover:border-grey-light focus:outline-none focus:border-grey-light xs:pr-4 mb-4" v-for="post in infiniteScrollPosts.posts" :key="post._id">
+      <!-- image -->
+      <div class="w-1/6 xs:hidden md:block lg:block">
+        <img class="block h-auto w-full rounded-l-sm" :src="post.thumbnail" alt="">
+      </div>
+      <!-- title -->
+      <div class="flex flex-col justify-between w-4/6 pl-2">
+        <div>
+          <span class="font-medium text-grey-darker">{{post.title}}</span>
         </div>
-        <div class="flex flex-col justify-between">
-          <span class="mt-2 text-lg font-medium text-green-darker">Eligendi soluta adipisci dicta corrupti excepturi.</span>
-          <div class="flex mb-2 text-xs">
-            <span class="text-grey-dark mr-4">B45</span>
-            <span class="mr-4">·</span>
-            <span class="mr-1 text-green-dark">86%</span>
-            <span class="text-grey-dark mr-4">like-ratio</span>
-            <span class="mr-4">·</span>
-            <span class="text-grey-dark">5 days ago</span>
-          </div>
-        </div>
-        <div class="flex items-center p-2">
-          <span class="text-5xl mr-1 text-grey-darkest font-thin">40</span>
-          <span class="text-sm text-grey">mins</span>
+        <div class="flex flex-wrap mb-2 text-xs ">
+          <span class="text-grey-dark mr-4">{{post.createdBy.username}}</span>
+          <span class="mr-4">·</span>
+          <span class="mr-1 text-green-dark">{{post.likeRatio}}</span>
+          <span class="text-grey-dark mr-4">like-ratio</span>
+          <span class="mr-4">·</span>
+          <span class="text-grey-dark">{{formatCreatedDate(post.createdDate)}}</span>
         </div>
       </div>
+
+      <div class="flex flex-shrink items-center p-2 w-1/6 opacity-50 xs:hidden md:flex  lg:flex">
+        <span class="text-4xl mr-1 text-grey-darkest font-thin">{{post.duration}}</span>
+        <span class="text-sm text-grey-dark">mins</span>
+      </div>
     </li>
+    <button @click="showMorePosts" v-if="showMoreEnabled">Fetch More</button>
+
   </ul>
 </template>
 
 <script>
-  import {
-    INFINITE_SCROLL_POSTS
-  } from '../../queries.js';
-  const pageSize = 2
-  export default {
-    name: 'Posts',
-    data() {
-      return {
+import { INFINITE_SCROLL_POSTS } from "../../queries.js";
+import moment from "moment";
+const pageSize = 2;
+
+export default {
+  name: "Posts",
+  data() {
+    return {
+      pageNum: 1,
+      showMoreEnabled: true
+    };
+  },
+  apollo: {
+    infiniteScrollPosts: {
+      query: INFINITE_SCROLL_POSTS,
+      variables: {
         pageNum: 1,
-        showMoreEnabled: true,
+        pageSize
       }
-    },
-    apollo: {
-      // execute apollo query within the post component
-      infiniteScrollPosts: {
-        // specify the query
-        query: INFINITE_SCROLL_POSTS,
-        //supply variables for query
-        variables: {
-          pageNum: 1,
-          pageSize,
-        }
-      }
-    },
-    methods: {
-
     }
+  },
+  methods: {
+    showMorePosts() {
+      this.pageNum += 1;
+      this.$apollo.queries.infiniteScrollPosts.fetchMore({
+        variables: {
+          pageNum: this.pageNum,
+          pageSize
+        },
+        updateQuery: (prevResult, { fetchMoreResult }) => {
+          console.log("previous result", prevResult.infiniteScrollPosts.posts);
+          console.log("fetch more result", fetchMoreResult);
+          const newPosts = fetchMoreResult.infiniteScrollPosts.posts;
+          const hasMore = fetchMoreResult.infiniteScrollPosts.hasMore;
+          this.showMoreEnabled = hasMore;
 
+          return {
+            infiniteScrollPosts: {
+              __typename: prevResult.infiniteScrollPosts.__typename,
+              posts: [...prevResult.infiniteScrollPosts.posts, ...newPosts],
+              hasMore
+            }
+          };
+        }
+      });
+    },
+    formatCreatedDate(date) {
+      return moment(new Date(date)).format("ll");
+    }
   }
+};
 </script>
 
-<style scoped>
-
-</style>
+ 
