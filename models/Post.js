@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
-const { getInfo } = require('ytdl-getinfo')
+const {
+  getInfo
+} = require('ytdl-getinfo')
 
 const PostSchema = new mongoose.Schema({
   videoUrl: {
@@ -18,7 +20,7 @@ const PostSchema = new mongoose.Schema({
   likeRatio: {
     type: Number
   },
-  likes:{
+  likes: {
     type: Number,
     default: 0
   },
@@ -34,11 +36,16 @@ const PostSchema = new mongoose.Schema({
 })
 
 PostSchema.pre('save', async function (next) {
-    let data = await getInfo(this.videoUrl)  
-    this.title = data.items[0].title
-    this.duration = Math.floor(data.items[0].duration/60)
-    this.thumbnail = data.items[0].thumbnail
-    this.likeRatio = Math.floor(data.items[0].like_count/(data.items[0].like_count + data.items[0].dislike_count) * 100)
-    next()
+  let data = await getInfo(this.videoUrl)
+  this.title = data.items[0].title.toLowerCase()
+    .split(" ")
+    .map(function (word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+  this.duration = Math.floor(data.items[0].duration / 60)
+  this.thumbnail = data.items[0].thumbnail
+  this.likeRatio = Math.floor(data.items[0].like_count / (data.items[0].like_count + data.items[0].dislike_count) * 100)
+  next()
 })
 module.exports = mongoose.model("Post", PostSchema);

@@ -34,7 +34,7 @@
 <script>
 import { INFINITE_SCROLL_POSTS } from "../../queries.js";
 import moment from "moment";
-const pageSize = 2;
+const pageSize = 4;
 
 export default {
   name: "Posts",
