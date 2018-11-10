@@ -3,7 +3,7 @@
     <li class="flex justify-between bg-white rounded-sm select-none cursor-pointer shadow border-2 border-transparent hover:border-grey-light focus:outline-none focus:border-grey-light xs:pr-4 mb-4" v-for="post in infiniteScrollPosts.posts" :key="post._id">
       <!-- image -->
       <div class="w-1/4 xs:hidden md:block lg:block">
-        <img class="block h-full w-full rounded-l-sm" :src="post.thumbnail" alt="">
+        <img class="block h-full w-full rounded-l-sm" :src="post.thumbnail">
       </div>
       <!-- title -->
       <div class="flex flex-col flex-1 justify-between w-1/2 ml-2">
@@ -19,14 +19,15 @@
           <span class="text-grey-dark">{{formatCreatedDate(post.createdDate)}}</span>
         </div>
       </div>
-
+      <!-- duration -->
       <div class="flex justify-end items-center w-1/6 opacity-50">
         <span class="text-4xl mr-1 text-grey-darkest font-thin">{{post.duration}}</span>
         <span class="text-sm text-grey-dark">mins</span>
       </div>
     </li>
-    <button @click="showMorePosts" v-if="showMoreEnabled">Fetch More</button>
-
+    <div class="text-center">
+      <button class="bg-grey-light hover:bg-grey text-grey-darker font-bold py-2 px-4 rounded" @click="showMorePosts" v-if="showMoreEnabled">Fetch More</button>
+    </div>
   </ul>
 </template>
 
