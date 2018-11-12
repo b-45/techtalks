@@ -41,6 +41,7 @@ export default new Router({
       path: "/:postId",
       name: "Post",
       component: Post,
+      props: true
     },
     {
       path: "/profile",

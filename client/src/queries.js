@@ -1,8 +1,10 @@
-import { gql } from 'apollo-boost'
+import {
+  gql
+} from 'apollo-boost'
 
 // Posts Queries
 
-export const INFINITE_SCROLL_POSTS = gql`
+export const INFINITE_SCROLL_POSTS = gql `
   query($pageNum: Int!, $pageSize: Int!){
     infiniteScrollPosts(pageNum: $pageNum, pageSize:$pageSize){
       hasMore
@@ -24,10 +26,23 @@ export const INFINITE_SCROLL_POSTS = gql`
     }
   }
 `
- 
+
+export const GET_POST = gql `
+  query($postId: ID!){
+    getPost(postId: $postId){
+      _id
+      videoUrl
+      title
+      
+    }
+  }
+
+
+`
+
 
 // User Queries
-export const GET_CURRENT_USER = gql`
+export const GET_CURRENT_USER = gql `
   query{
     getCurrentUser{
       _id
@@ -44,10 +59,10 @@ export const GET_CURRENT_USER = gql`
     }
   }
 `
- 
 
- // Posts Mutations 
- export const ADD_POST = gql`
+
+// Posts Mutations 
+export const ADD_POST = gql `
   mutation(
   $videoUrl: String!  
   $creatorId: ID!
@@ -67,7 +82,7 @@ export const GET_CURRENT_USER = gql`
  `
 
 // User Mutation
-export const SIGNIN_USER = gql`
+export const SIGNIN_USER = gql `
  mutation($username: String! $password: String!){
   signinUser(username:$username, password:$password){
    token
@@ -85,9 +100,3 @@ mutation($username: String!, $email:String!, $password: String!) {
   }
 }
 `
-
-
-
-
-
-

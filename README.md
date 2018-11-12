@@ -32,6 +32,7 @@
 - [x] Re-create data model for mongodb and graphql types, utilize ytdl-getinfo to extract metadata from youtube url
 - [x] create fetchMore query to to add more post
 - [x] format post titles to titlecase pre save to mongodb
+- [x] query video post from backend using postId
 
 **Frontend**
 

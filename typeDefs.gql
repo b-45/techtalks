@@ -5,7 +5,7 @@ type User {
   password: String!
   avatar: String
   joinDate: String
-  favorites: [Post] 
+  favorites: [Post]
 }
 
 type Post {
@@ -18,7 +18,7 @@ type Post {
   likes: Int
   createdDate: String
   createdBy: User!
- }
+}
 
 type Token {
   token: String!
@@ -32,21 +32,14 @@ type PostsPage {
 type Query {
   getCurrentUser: User
   getPosts: [Post]
+  getPost(postId: ID!): Post!
   infiniteScrollPosts(pageNum: Int!, pageSize: Int!): PostsPage
 }
 
 type Mutation {
-  addPost(
-    videoUrl: String!
-    creatorId: ID!): Post!
-    
-  signupUser(
-    username: String!, 
-    email: String!, 
-    password: String!): Token
+  addPost(videoUrl: String!, creatorId: ID!): Post!
 
-  signinUser(
-    username: String!, 
-    password: String!): Token
+  signupUser(username: String!, email: String!, password: String!): Token
+
+  signinUser(username: String!, password: String!): Token
 }
-
