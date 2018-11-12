@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-lg mx-auto" v-if="getPost">
-    <div class="flex justify-center items-center mt-10 mb-2">
+    <div class="flex justify-center items-center mt-6 mb-4">
       <iframe :src="getVideo" width="960" height="500"></iframe>
     </div>
     <div>
