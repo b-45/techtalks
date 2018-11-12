@@ -8,6 +8,9 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  videoId: {
+    type: String
+  },
   title: {
     type: String,
   },
@@ -42,7 +45,8 @@ PostSchema.pre('save', async function (next) {
     .map(function (word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
-    .join(" ");
+    .join(" ")
+  this.videoId = data.items[0].id
   this.duration = Math.floor(data.items[0].duration / 60)
   this.thumbnail = data.items[0].thumbnail
   this.likeRatio = Math.floor(data.items[0].like_count / (data.items[0].like_count + data.items[0].dislike_count) * 100)

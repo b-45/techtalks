@@ -11,6 +11,7 @@ type User {
 type Post {
   _id: ID
   videoUrl: String
+  videoId: String
   title: String!
   duration: Int
   thumbnail: String

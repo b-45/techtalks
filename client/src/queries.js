@@ -32,6 +32,7 @@ export const GET_POST = gql `
     getPost(postId: $postId){
       _id
       videoUrl
+      videoId
       title
       
     }

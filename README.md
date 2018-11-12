@@ -66,3 +66,4 @@
 - [x] show user error notification when token expires
 - [x] create post user interface
 - [x] create a video post route and component
+- [ ] build video post in post component
