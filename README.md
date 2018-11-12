@@ -31,8 +31,7 @@
 - [x] create infinite scroll posts query & resolver
 - [x] Re-create data model for mongodb and graphql types, utilize ytdl-getinfo to extract metadata from youtube url
 - [x] create fetchMore query to to add more post
-
-* [x] format post titles to titlecase pre save to mongodb
+- [x] format post titles to titlecase pre save to mongodb
 
 **Frontend**
 
@@ -65,3 +64,4 @@
 - [x] show user notification when signed in
 - [x] show user error notification when token expires
 - [x] create post user interface
+- [x] create a video post route and component

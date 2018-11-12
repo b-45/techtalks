@@ -1,6 +1,6 @@
 <template>
   <ul class="list-reset" v-if="infiniteScrollPosts">
-    <li class="flex justify-between bg-white rounded-sm select-none cursor-pointer shadow border-2 border-transparent hover:border-grey-light focus:outline-none focus:border-grey-light xs:pr-4 mb-4" v-for="post in infiniteScrollPosts.posts" :key="post._id">
+    <li class="flex justify-between bg-white rounded-sm select-none cursor-pointer shadow border-2 border-transparent hover:border-grey-light focus:outline-none focus:border-grey-light  mb-4" v-for="post in infiniteScrollPosts.posts" :key="post._id" @click="goToPost(post._id)">
       <!-- image -->
       <div class="w-1/4 xs:hidden md:block lg:block">
         <img class="block h-full w-full rounded-l-sm" :src="post.thumbnail">
@@ -20,8 +20,8 @@
         </div>
       </div>
       <!-- duration -->
-      <div class="flex justify-end items-center w-1/6 opacity-50">
-        <span class="text-4xl mr-1 text-grey-darkest font-thin">{{post.duration}}</span>
+      <div class="flex justify-end items-center w-1/6 opacity-50 mr-4">
+        <span class="lg:text-4xl md:text-4xl mr-1 text-grey-darkest font-thin xs:text-lg">{{post.duration}}</span>
         <span class="text-sm text-grey-dark">mins</span>
       </div>
     </li>
@@ -80,6 +80,10 @@ export default {
     },
     formatCreatedDate(date) {
       return moment(new Date(date)).format("ll");
+    },
+
+    goToPost(postId) {
+      this.$router.push(`/${postId}`);
     }
   }
 };
