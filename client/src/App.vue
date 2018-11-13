@@ -40,8 +40,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "App",
   watch: {
-    user(value) {
-      if (value) {
+    user(newValue, oldValue) {
+      if (oldValue === null) {
         this.$notify({
           title: "Welcome",
           message: "You are signed in!",

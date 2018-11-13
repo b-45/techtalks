@@ -16,7 +16,8 @@
           <span class="mr-1 text-green-dark">{{post.likeRatio}}</span>
           <span class="text-grey-dark mr-2">like-ratio</span>
           <span class="mr-2">·</span>
-          <span class="text-grey-dark">{{formatCreatedDate(post.createdDate)}}</span>
+          <span class="text-grey-dark mr-2">{{formatCreatedDate(post.createdDate)}}</span>
+          <span class="mr-2">·</span>
         </div>
       </div>
       <!-- duration -->
@@ -62,8 +63,8 @@ export default {
           pageSize
         },
         updateQuery: (prevResult, { fetchMoreResult }) => {
-          console.log("previous result", prevResult.infiniteScrollPosts.posts);
-          console.log("fetch more result", fetchMoreResult);
+          // console.log("previous result", prevResult.infiniteScrollPosts.posts);
+          // console.log("fetch more result", fetchMoreResult);
           const newPosts = fetchMoreResult.infiniteScrollPosts.posts;
           const hasMore = fetchMoreResult.infiniteScrollPosts.hasMore;
           this.showMoreEnabled = hasMore;

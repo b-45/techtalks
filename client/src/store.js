@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { defaultClient as apolloClient } from './main'
+import {
+  defaultClient as apolloClient
+} from './main'
 import router from './router'
 import {
   SIGNIN_USER,
   SIGNUP_USER,
   ADD_POST,
   GET_CURRENT_USER,
+  GET_POST,
+  INFINITE_SCROLL_POSTS,
 } from './queries'
 
 Vue.use(Vuex)
@@ -30,46 +34,74 @@ export default new Vuex.Store({
       state.error = payload
     },
     setAuthError: (state, payload) => {
-      state.authError =payload
+      state.authError = payload
     },
     clearUser: state => (state.user = null),
-    clearError: state => (state.error  = null),
+    clearError: state => (state.error = null),
 
   },
   actions: {
-    getCurrentUser: ({ commit }) => {
+    getCurrentUser: ({
+      commit
+    }) => {
       commit('setLoading', true)
       apolloClient.query({
           query: GET_CURRENT_USER
-        }) 
-        .then(({ data }) => {
+        })
+        .then(({
+          data
+        }) => {
           commit('setLoading', false)
           // Add user data to state
           commit('setUser', data.getCurrentUser)
         })
         .catch((err) => {
-           //console.error(err)
+          //console.error(err)
         })
     },
-    
-    addPost: ({ commit }, payload) => {
+
+    addPost: ({
+      commit
+    }, payload) => {
       apolloClient.mutate({
         mutation: ADD_POST,
-        variables: payload
-      }).then(({data}) => {
+        variables: payload,
+        // update: (cache, {
+        //   data
+        // }) => {
+        //   console.log(cache, data)
+        //read query from cache and update
+        // const data = cache.readQuery({
+        //   query: INFINITE_SCROLL_POSTS
+        // })
+        // create updated data
+        // data.infiniteScrollPosts.unshift(addPost)
+        // write updated data to query
+        // cache.writeQuery({
+        //   query: INFINITE_SCROLL_POSTS,
+        //   data
+        // })
+        // }
+      }).then(({
+        data
+      }) => {
         console.log(data.addPost)
       }).catch(err => {
         console.error(err)
       })
     },
-    signinUser: ({ commit }, payload) => {
+    signinUser: ({
+      commit
+    }, payload) => {
       commit('clearError')
       apolloClient
         .mutate({
           mutation: SIGNIN_USER,
           variables: payload
         })
-        .then(({ data }) => {
+        .then(({
+          data
+        }) => {
           localStorage.setItem('token', data.signinUser.token)
           // reload page
           router.go()
@@ -79,14 +111,18 @@ export default new Vuex.Store({
           //console.error(err)
         })
     },
-    signupUser: ({ commit }, payload) => {
+    signupUser: ({
+      commit
+    }, payload) => {
       commit('clearError')
       apolloClient
         .mutate({
           mutation: SIGNUP_USER,
           variables: payload
         })
-        .then(({ data }) => {
+        .then(({
+          data
+        }) => {
           localStorage.setItem('token', data.signupUser.token)
           // reload page
           router.go()
@@ -96,7 +132,9 @@ export default new Vuex.Store({
           //console.error(err)
         })
     },
-    signoutUser: async ({ commit }) => {
+    signoutUser: async ({
+      commit
+    }) => {
       // clear user in state
       commit('clearUser')
       // remove token in localstorage
@@ -108,7 +146,7 @@ export default new Vuex.Store({
       router.push('/')
     }
   },
-  getters:{
+  getters: {
     user: state => state.user,
     loading: state => state.loading,
     error: state => state.error,
