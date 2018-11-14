@@ -7,8 +7,8 @@
       <div>
         <span class="mr-4 font-medium text-grey-darker trunc">{{getPost.title}}</span>
       </div>
-      <button @click="handleLikePost" class="text-grey-dark cursor-pointer">
-        <font-awesome-icon icon="heart" class="text-grey-light" />
+      <button @click="handleLikeToggle" class="text-grey-dark cursor-pointer">
+        <font-awesome-icon icon="heart" class="text-grey-light" :style="checkIfPostLiked(getPost._id) ? { color: 'tomato' } : { color: 'grey' } " />
         <span class="ml-3 font-weight-thin">{{getPost.likes}} LIKES</span>
       </button>
     </div>
@@ -20,6 +20,11 @@ import { mapGetters } from "vuex";
 export default {
   name: "Post",
   props: ["postId"],
+  data() {
+    return {
+      postLiked: false
+    };
+  },
   apollo: {
     getPost: {
       query: GET_POST,
@@ -31,12 +36,32 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["user"]),
+    ...mapGetters(["user", "userFavorites"]),
     getVideo() {
       return `https://www.youtube.com/embed/${this.getPost.videoId}`;
     }
   },
   methods: {
+    checkIfPostLiked(postId) {
+      // check if user favorites includes post with id of 'postId'
+      if (
+        this.userFavorites &&
+        this.userFavorites.some(fave => fave._id === postId)
+      ) {
+        this.postLiked = true;
+        return true;
+      } else {
+        this.postLiked = false;
+        return false;
+      }
+    },
+    handleLikeToggle() {
+      if (this.postLiked) {
+        this.handleUnlikePost();
+      } else {
+        this.handleLikePost();
+      }
+    },
     handleLikePost() {
       const variables = {
         postId: this.postId,

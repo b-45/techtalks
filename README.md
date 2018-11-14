@@ -68,3 +68,4 @@
 - [x] create post user interface
 - [x] create a video post route and component
 - [x] build video post in post component
+- [x] implement logic to toggle like/unlike and add post to user favorites
