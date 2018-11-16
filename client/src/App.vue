@@ -23,6 +23,12 @@
             </button>
           </router-link>
         </div>
+        <router-link to="/profile">
+          <button v-if="user" class="mr-6 rounded px-1 py-1 hover:bg-grey-light">
+            <font-awesome-icon icon="user" class="text-grey-darkest" />
+            <el-badge v-if="userFavorites.length" :value="userFavorites.length" :class="{'bounce': badgeAnimated}"></el-badge>
+          </button>
+        </router-link>
         <button v-if="user" class="mr-6 rounded px-1 py-1 hover:bg-grey-light" @click="handleSignoutUser">
           <font-awesome-icon icon="sign-out-alt" class="text-grey-darkest" />
         </button>
@@ -39,6 +45,11 @@
 import { mapGetters } from "vuex";
 export default {
   name: "App",
+  data() {
+    return {
+      badgeAnimated: false
+    };
+  },
   watch: {
     user(newValue, oldValue) {
       if (oldValue === null) {
@@ -62,6 +73,13 @@ export default {
           type: "success"
         });
       }
+    },
+    userFavorites(value) {
+      // if user favorites value changed at all
+      if (value) {
+        this.badgeAnimated = true;
+        setTimeout(() => (this.badgeAnimated = false), 1000);
+      }
     }
   },
   methods: {
@@ -70,7 +88,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["authError", "user"]),
+    ...mapGetters(["authError", "user", "userFavorites"]),
     navItems() {
       let items = [
         {
@@ -95,12 +113,12 @@ export default {
             icon: "plus",
             title: "Create Post",
             link: "/post/add"
-          },
-          {
-            icon: "user",
-            title: "Profile",
-            link: "/profile"
           }
+          // {
+          //   icon: "user",
+          //   title: "Profile",
+          //   link: "/profile"
+          // }
         ];
       }
       return items;
@@ -111,4 +129,31 @@ export default {
 
 <style>
 @import "assets/styles/tailwind.postcss";
+
+.bounce {
+  animation: bounce 1s both;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
 </style>

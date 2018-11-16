@@ -69,3 +69,4 @@
 - [x] create a video post route and component
 - [x] build video post in post component
 - [x] implement logic to toggle like/unlike and add post to user favorites
+- [x] create animated badge to notify when user likes post
