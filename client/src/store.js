@@ -9,8 +9,7 @@ import {
   SIGNUP_USER,
   ADD_POST,
   GET_CURRENT_USER,
-  GET_POST,
-  INFINITE_SCROLL_POSTS,
+  SEARCH_POSTS,
 } from './queries'
 
 Vue.use(Vuex)
@@ -66,22 +65,6 @@ export default new Vuex.Store({
       apolloClient.mutate({
         mutation: ADD_POST,
         variables: payload,
-        // update: (cache, {
-        //   data
-        // }) => {
-        //   console.log(cache, data)
-        //read query from cache and update
-        // const data = cache.readQuery({
-        //   query: INFINITE_SCROLL_POSTS
-        // })
-        // create updated data
-        // data.infiniteScrollPosts.unshift(addPost)
-        // write updated data to query
-        // cache.writeQuery({
-        //   query: INFINITE_SCROLL_POSTS,
-        //   data
-        // })
-        // }
       }).then(({
         data
       }) => {
@@ -144,7 +127,24 @@ export default new Vuex.Store({
       await apolloClient.resetStore()
       // redirect home 
       router.push('/')
-    }
+    },
+
+    searchPosts: ({
+      commit
+    }, payload) => {
+      apolloClient
+        .query({
+          query: SEARCH_POSTS,
+          variables: payload
+        })
+        .then(({
+          data
+        }) => {
+          // commit("setSearchResults", data.searchPosts);
+          console.log(data.searchPosts);
+        })
+        .catch(err => console.error(err));
+    },
   },
   getters: {
     user: state => state.user,

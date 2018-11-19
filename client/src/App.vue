@@ -11,7 +11,7 @@
 
       <!-- search bar -->
       <div class="xs:hidden md:block lg:block">
-        <input type="text" placeholder="Search" class="block lg:w-128 bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-grey">
+        <input v-model="searchTerm" @input="handleSearchPosts" type="text" placeholder="Search" class="block lg:w-128 bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-grey">
       </div>
 
       <!-- toolbar links -->
@@ -47,7 +47,8 @@ export default {
   name: "App",
   data() {
     return {
-      badgeAnimated: false
+      badgeAnimated: false,
+      searchTerm: ""
     };
   },
   watch: {
@@ -83,6 +84,11 @@ export default {
     }
   },
   methods: {
+    handleSearchPosts() {
+      this.$store.dispatch("searchPosts", {
+        searchTerm: this.searchTerm
+      });
+    },
     handleSignoutUser() {
       this.$store.dispatch("signoutUser");
     }

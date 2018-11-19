@@ -52,4 +52,9 @@ PostSchema.pre('save', async function (next) {
   this.likeRatio = Math.floor(data.items[0].like_count / (data.items[0].like_count + data.items[0].dislike_count) * 100)
   next()
 })
+
+// index to search all fields of post
+PostSchema.index({
+  '$**': 'text'
+})
 module.exports = mongoose.model("Post", PostSchema);
