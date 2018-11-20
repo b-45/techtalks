@@ -35,6 +35,16 @@
       </div>
     </nav>
 
+    <div v-if="searchResults.length" class="flex flex-col justify-center items-center mx-auto absolute z-10  w-full bg-grey-darkest">
+      <ul class="list-reset py-2 px-2">
+        <h4 class="text-white border-b border-grey-dark py-1">Search results:</h4>
+        <li class="text-white mb-1 px-2 py-2 border-l-2 border-green cursor-pointer hover:bg-grey-darker" v-for="result in searchResults" :key="result._id" @click="goToSearchResult(result._id)">
+          <p>{{result.title }}</p>
+        </li>
+      </ul>
+
+    </div>
+
     <!-- app content -->
     <router-view />
 
@@ -84,6 +94,14 @@ export default {
     }
   },
   methods: {
+    goToSearchResult(resultId) {
+      // Clear search term
+      this.searchTerm = "";
+      // Go to desired result
+      this.$router.push(`/${resultId}`);
+      // Clear search results
+      this.$store.commit("clearSearchResults");
+    },
     handleSearchPosts() {
       this.$store.dispatch("searchPosts", {
         searchTerm: this.searchTerm
@@ -94,7 +112,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["authError", "user", "userFavorites"]),
+    ...mapGetters(["authError", "user", "userFavorites", "searchResults"]),
     navItems() {
       let items = [
         {

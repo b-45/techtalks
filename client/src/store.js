@@ -19,7 +19,8 @@ export default new Vuex.Store({
     user: null,
     error: null,
     loading: false,
-    authError: null
+    authError: null,
+    searchReuslts: []
 
   },
   mutations: {
@@ -35,6 +36,12 @@ export default new Vuex.Store({
     setAuthError: (state, payload) => {
       state.authError = payload
     },
+    setSearchResults: (state, payload) => {
+      if (payload !== null) {
+        state.searchReuslts = payload
+      }
+    },
+    clearSearchResults: state => (state.searchReuslts = []),
     clearUser: state => (state.user = null),
     clearError: state => (state.error = null),
 
@@ -140,8 +147,8 @@ export default new Vuex.Store({
         .then(({
           data
         }) => {
-          // commit("setSearchResults", data.searchPosts);
-          console.log(data.searchPosts);
+          commit("setSearchResults", data.searchPosts);
+          //console.log(data.searchPosts);
         })
         .catch(err => console.error(err));
     },
@@ -151,6 +158,7 @@ export default new Vuex.Store({
     userFavorites: state => state.user && state.user.favorites,
     loading: state => state.loading,
     error: state => state.error,
-    authError: state => state.authError
+    authError: state => state.authError,
+    searchResults: state => state.searchReuslts
   }
 })

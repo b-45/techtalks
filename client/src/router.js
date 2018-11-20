@@ -3,10 +3,11 @@ import Router from 'vue-router'
 import Home from './components/Home.vue'
 import Signin from './components/Auth/Signin.vue'
 import Signup from './components/Auth/Signup.vue'
-import AddPost from './components/Posts/AddPost.vue'
 import Profile from './components/Auth/Profile.vue'
 import AuthGuard from './AuthGuard'
 import Post from './components/Posts/Post.vue'
+import AddPost from './components/Posts/AddPost.vue'
+
 
 
 
@@ -18,7 +19,7 @@ export default new Router({
   // base: process.env.BASE_URL,
   routes: [{
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {
@@ -38,7 +39,7 @@ export default new Router({
       beforeEnter: AuthGuard
     },
     {
-      path: "/:postId",
+      path: "/posts/:postId",
       name: "Post",
       component: Post,
       props: true
@@ -47,7 +48,7 @@ export default new Router({
       path: "/profile",
       name: "Profile",
       component: Profile,
-      beforeEnter: AuthGuard
+      beforeEnter: AuthGuard,
     },
   ]
 })

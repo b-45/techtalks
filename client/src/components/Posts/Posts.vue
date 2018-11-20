@@ -84,7 +84,7 @@ export default {
     },
 
     goToPost(postId) {
-      this.$router.push(`/${postId}`);
+      this.$router.push(`/posts/${postId}`);
     }
   }
 };
