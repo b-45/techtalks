@@ -1,16 +1,20 @@
 <template>
-  <div class="max-w-lg mx-auto" v-if="getPost">
-    <div class="flex justify-center items-center mt-6 mb-4">
-      <iframe :src="getVideo" width="960" height="500"></iframe>
+  <div>
+    <div class="lds-hourglass" v-if="this.$apollo.queries.getPost.loading">
     </div>
-    <div class="flex">
-      <div>
-        <span class="mr-4 font-medium text-grey-darker trunc">{{getPost.title}}</span>
+    <div class="max-w-lg mx-auto" v-if="getPost">
+      <div class="flex justify-center items-center mt-6 mb-4">
+        <iframe :src="getVideo" width="960" height="500"></iframe>
       </div>
-      <button @click="handleLikeToggle" class="text-grey-dark cursor-pointer">
-        <font-awesome-icon icon="heart" class="text-grey-light" :style="checkIfPostLiked(getPost._id) ? { color: 'tomato' } : { color: 'grey' } " />
-        <span class="ml-3 font-weight-thin">{{getPost.likes}} LIKES</span>
-      </button>
+      <div class="flex">
+        <div>
+          <span class="mr-4 font-medium text-grey-darker trunc">{{getPost.title}}</span>
+        </div>
+        <button @click="handleLikeToggle" class="text-grey-dark cursor-pointer">
+          <font-awesome-icon icon="heart" class="text-grey-light" :style="checkIfPostLiked(getPost._id) ? { color: 'tomato' } : { color: 'grey' } " />
+          <span class="ml-3 font-weight-thin">{{getPost.likes}} LIKES</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +36,8 @@ export default {
         return {
           postId: this.postId
         };
-      }
+      },
+      result({ data, loading }) {}
     }
   },
   computed: {

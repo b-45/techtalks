@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 const bcrypt = require('bcrypt')
+const md5 = require('md5')
+
 
 
 const UserSchema = new mongoose.Schema({
@@ -33,8 +35,14 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
+// Create and add avatar for users
+UserSchema.pre('save', function (next) {
+  this.avatar = `http://gravatar.com/avatar/${md5(this.username)}?d=identicon`
+  next()
+})
+
 //  Hash passwords saved to database
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   if (!this.isModified('password')) {
     return next()
   }

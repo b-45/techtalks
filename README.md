@@ -72,3 +72,5 @@
 - [x] implement logic to toggle like/unlike and add post to user favorites
 - [x] create animated badge to notify when user likes post
 - [x] implement search result handler and UI
+
+* [x] implement loading spinner on getPost
