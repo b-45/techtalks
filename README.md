@@ -4,6 +4,11 @@
 
 ### **techtalks** is a platform for users to share and discover highly engaging technology presentations.
 
+visit the project here:
+
+[Graphql Backend](https://techtalks-qjnfgcnpth.now.sh/)
+[Vue frontend](https://techtalks-tmiejnfril.now.sh/)
+
 ### Commits
 
 ---
