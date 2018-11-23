@@ -1,10 +1,15 @@
-const { ApolloServer, AuthenticationError } = require("apollo-server")
+const {
+  ApolloServer,
+  AuthenticationError
+} = require("apollo-server")
 const mongoose = require('mongoose')
 const path = require('path')
 const fs = require('fs')
 const User = require("./models/User")
 const Post = require("./models/Post")
-require("dotenv").config({ path: "variables.env" })
+require("dotenv").config({
+  path: "variables.env"
+})
 const jwt = require('jsonwebtoken')
 
 // Import typeDefs.gql & resolver.js
@@ -13,19 +18,19 @@ const typeDefs = fs.readFileSync(filePath, "utf-8")
 const resolvers = require('./resolvers')
 
 // Connect to MongoDb Atlas cluster
-mongoose.connect( process.env.MONGO_URI,
-    { useNewUrlParser: true, }
-  ).then(() => console.log("MongoDB connected"))
-   .catch(err => console.error(err));
-   mongoose.set('useCreateIndex', true)
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+  }).then(() => console.log("MongoDB connected"))
+  .catch(err => console.error(err));
+mongoose.set('useCreateIndex', true)
 
 // Verify JWT Token passed from client
 const getUser = async token => {
-  if(token) {
+  if (token) {
     try {
       return await jwt.verify(token, process.env.SECRET)
-    } catch(err) {
-        throw new AuthenticationError('Your session has ended. Please sign in again')
+    } catch (err) {
+      throw new AuthenticationError('Your session has ended. Please sign in again')
     }
   }
 }
@@ -37,11 +42,17 @@ const server = new ApolloServer({
   // format authentication errors for ui notifications
   formatError: error => ({
     name: error.name,
-    message: error.message  
+    message: error.message
   }),
-  context: async ({ req }) => {
+  context: async ({
+    req
+  }) => {
     const token = req.headers["authorization"]
-      return { User, Post, currentUser: await getUser(token)}  
+    return {
+      User,
+      Post,
+      currentUser: await getUser(token)
+    }
   },
   playground: {
     endpoint: '/playground',
@@ -53,6 +64,10 @@ const server = new ApolloServer({
 });
 
 // Start the HTTP server to listen for connections
-server.listen().then(({ url }) => {
-  console.log(` 🚀 Server live at  ${url}`);
+server.listen({
+  port: process.env.PORT || 4000
+}).then(({
+  url
+}) => {
+  console.log(` 🚀  Server live at  ${url}`);
 });

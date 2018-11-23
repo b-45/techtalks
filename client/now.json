@@ -1,0 +1,15 @@
+{
+  "name": "techtalks",
+  "type": "static",
+  "static": {
+    "public": "dist",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  },
+  "alias": "techtalks",
+  "files": [
+    "dist"
+  ]
+}

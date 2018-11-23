@@ -35,6 +35,7 @@
 - [x] query video post from backend using postId
 - [x] create `likePost` & `unlikePost` mutation and resolver for post component
 - [x] implement search posts query and resolver
+- [x] deploy application with zeit now
 
 **Frontend**
 
