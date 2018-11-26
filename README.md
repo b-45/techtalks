@@ -6,7 +6,10 @@
 
 visit the project here:
 
+First click and load server -
 [Graphql Backend](https://techtalks-qjnfgcnpth.now.sh/)
+
+Then click here to interact with frontend app -
 [Vue frontend](https://techtalks-tmiejnfril.now.sh/)
 
 ### Commits
